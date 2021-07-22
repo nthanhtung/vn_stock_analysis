@@ -33,6 +33,12 @@ link: https://drive.google.com/drive/folders/1bCgw5kKVVOLYC3QKsSSrR3_KIb1JAmn_?u
 in power bi, go to tab : Export Forecast Data
 export to location: data/pbi/finance_data_year_forecast.csv
 
+# hardcoded rule to clean data
+* if eps = 0 then eps = eps average all period
+* if eps average > 4000 then eps average = 4000
+* if eps average < -4000 then eps average = -4000
+* return rate of market = return of vnindex 21 year
+
 # my key learning from this project:
 * OOP
 * Selenium
