@@ -1,9 +1,8 @@
-import switch_dir
 import xxx.job.daily as d
 import xxx.job.history as h
 import datetime as dt
 
-data_path = "C:/Users/tung.nguyen/Desktop/0 Project/stock/"
+data_path = "C:/Users/tung.nguyen/Desktop/0 Project/01 StockData" + "/"
 chrome_driver_path = "C:/chromedriver_win32/chromedriver.exe"
 username = "thanhtung211995@gmail.com"
 password = "BkkWwkaL123"
