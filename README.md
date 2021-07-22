@@ -40,7 +40,7 @@ export to location: data/pbi/finance_data_year_forecast.csv
 * Technical Analysis
 * Fundamental Analysis
 ---------
-below part is in progress to be completed
+below part is in progress (to be completed)
 # use case
 
 ## stock scan based on signal:
