@@ -1,0 +1,15 @@
+let 
+    GetCSVTable = (CSVFile as binary, DelimiterType as text) => let
+        Source = Csv.Document(CSVFile,[Delimiter=DelimiterType, Columns=16, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+        #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+    in
+        #"Promoted Headers",
+
+    readFiles = (FolderPath as text, DelimiterType as text) => let
+        Source = Folder.Files(FolderPath),
+        #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+        #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"GetCSVTable"([Content], DelimiterType))
+    in
+        #"Invoke Custom Function1"
+in
+    readFiles

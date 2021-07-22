@@ -1,0 +1,29 @@
+let 
+    getTable = (workbook, sheetname) => let
+        Source = Excel.Workbook(workbook, null, true),
+        DataSheet = Source{[Item=sheetname,Kind="Sheet"]}[Data],
+        #"Promoted Headers" = Table.PromoteHeaders(DataSheet, [PromoteAllScalars=true])
+    in
+        #"Promoted Headers",
+    replacePath = (val) => let 
+        r1 = Text.Replace(val,"/","."),
+        r2 = Text.Replace(r1,"\","."),
+        l1 = Text.Lower(r2)
+    in 
+        l1,
+
+    readFiles = (filenamePattern as text, sheetName as text) => let
+        // Source = if LocalFolderPath = null then SharePoint.Files(DataFolderPath, [ApiVersion = 15]) else Folder.Files(LocalFolderPath),
+        Source = SharePoint.Files(DataFolderPath, [ApiVersion = 15]),
+        Path = DataFolderPath,
+        #"RenameFolderPath" = Table.ReplaceValue(Source,Path,"",Replacer.ReplaceText,{"Folder Path"}),
+        #"AddColumn"= Table.AddColumn(#"RenameFolderPath", "NameWithPath", each [Folder Path] & [Name]),
+        #"SelectFile" = Table.SelectRows(#"AddColumn", each (Text.Contains(replacePath([NameWithPath]) , replacePath(filenamePattern)))),
+        #"Transform"=Table.AddColumn(#"SelectFile", "Transform File", each getTable([Content],sheetName)),
+        #"Selected" = Table.SelectColumns(#"Transform",{"Name","Transform File"}),
+        #"RenameCol"=Table.RenameColumns(#"Selected", {"Name", "Source.Name"}),
+        #"MergeFile" = Table.ExpandTableColumn(#"RenameCol", "Transform File", Table.ColumnNames(#"RenameCol"{0}[#"Transform File"]))        
+    in
+        #"MergeFile"
+in
+    readFiles
