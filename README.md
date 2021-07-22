@@ -1,11 +1,20 @@
 
 ---------
-# my key learning from this project:
-* OOP
-* Selenium
-* OLAP cubes
-* Technical Analysis
-* Fundamental Analysis
+# key feature
+## OLAP cube to analyze data in multiple dimensions
+* symbol
+* industry
+* time period
+## fundamental analysis
+* free cash flow to firm (fcff) valuation: 
+* et asset valuation
+* financial ratio: p/e, p/b
+* year over year growth rate
+* what if analysis to build financial model 
+## technical analysis
+* candle signal
+* macd, sma, rsi, volume signal
+
 # how to setup
 ## 1. manual install wheel file in folder /dependency
 file name: TA_Lib-0.4.21-cp39-cp39-win_amd64.whl
@@ -23,6 +32,13 @@ link: https://drive.google.com/drive/folders/1bCgw5kKVVOLYC3QKsSSrR3_KIb1JAmn_?u
 ## 6. export forecast data
 in power bi, go to tab : Export Forecast Data
 export to location: data/pbi/finance_data_year_forecast.csv
+
+# my key learning from this project:
+* OOP
+* Selenium
+* OLAP cubes
+* Technical Analysis
+* Fundamental Analysis
 ---------
 below part is in progress to be completed
 # use case
