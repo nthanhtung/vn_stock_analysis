@@ -1,6 +1,12 @@
 
 ---------
-# setup
+# my key learning from this project:
+* OOP
+* Selenium
+* OLAP cubes
+* Technical Analysis
+* Fundamental Analysis
+# how to setup
 ## 1. manual install wheel file in folder /dependency
 file name: TA_Lib-0.4.21-cp39-cp39-win_amd64.whl
 ## 2. install all library in requirements.txt
