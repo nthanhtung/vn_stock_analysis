@@ -1,7 +1,7 @@
 
 ---------
 # setup
-## 1. manual install wheel file in folder /dist
+## 1. manual install wheel file in folder /dependency
 file name: TA_Lib-0.4.21-cp39-cp39-win_amd64.whl
 ## 2. install all library in requirements.txt
 pip install -r requirements.txt
