@@ -1,8 +1,21 @@
 
 ---------
-# install
-manual: TA_Lib-0.4.21-cp39-cp39-win_amd64.whl
-
+# setup
+## 1. manual install wheel file in folder /dist
+file name: TA_Lib-0.4.21-cp39-cp39-win_amd64.whl
+## 2. install all library in requirements.txt
+pip install -r requirements.txt
+## 3. download data & template power bi report
+link: https://drive.google.com/drive/folders/1bCgw5kKVVOLYC3QKsSSrR3_KIb1JAmn_?usp=sharing
+## 4. edit data path 
+* in power bi: parameter in utility
+* in python code: /test/x.py
+## 5. run python script in folder /test to get daily data
+* 1. script switch_dir.py
+* 2. script x.py : only need to load daily data
+* Note: you can build this project as wheel file, then install vn_stock_analysis wheel file, then you don't need to run switch_dir.py
+---------
+below part is in progress to be completed
 # use case
 
 ## stock scan based on signal:
