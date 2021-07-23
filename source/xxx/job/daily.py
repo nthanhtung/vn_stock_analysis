@@ -33,11 +33,13 @@ class daily_job(p.job_parent):
     def extract_data_from_web(self):
         ''' get vnindex data from cophieu 68, get bond data from vn_investing '''
         try:
+            ############### transform path
+            data_path = self.data_path.replace("/", "\\")
             ############### get vnindex data from cophieu 68
-            d_cp68 = cp.get_cophieu68(driver_path = self.chrome_driver_path, download_path = self.data_path + "data/cophieu68", stock_url="https://www.cophieu68.vn/export/excelfull.php?id=^vnindex", un = self.un, pw = self.pw)
+            d_cp68 = cp.get_cophieu68(driver_path = self.chrome_driver_path, download_path = data_path + "data\\cophieu68", stock_url="https://www.cophieu68.vn/export/excelfull.php?id=^vnindex", un = self.un, pw = self.pw)
             d_cp68.close()
             ############### get bond data from vn_investing
-            vn_investing = wi.web_scapping_vn_investing(driver_path = self.chrome_driver_path, download_path = self.data_path + "data/vn_investing", un = self.un, pw = self.pw)
+            vn_investing = wi.web_scapping_vn_investing(driver_path = self.chrome_driver_path, download_path = data_path + "data\\vn_investing", un = self.un, pw = self.pw)
             d_vn_investing = vn_investing.get_government_bond_data_of_1_country(url = "https://vn.investing.com/rates-bonds/vietnam-10-year-bond-yield-historical-data", download_file_name = "vietnam_government_bond_data_10_years")
             d_vn_investing.close()
             super().job_log("daily_job extract_data_from_web completed")

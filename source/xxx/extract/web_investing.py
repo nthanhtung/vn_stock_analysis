@@ -6,8 +6,8 @@ import xxx.utility as u
 class web_scapping_vn_investing(web_scrapping):
     def __init__(self, driver_path: str, download_path: str, un: str = "x@gmail.com", pw: str = "******") -> None:
         #create foler if not exist
-        stg_path = f"{download_path}/stg"
-        fnd_path = f"{download_path}/fnd"
+        stg_path = f"{download_path}\\stg"
+        fnd_path = f"{download_path}\\fnd"
         super().__init__(driver_path=driver_path, download_path=stg_path)
         self.stg_path = stg_path
         self.fnd_path = fnd_path
@@ -39,7 +39,7 @@ class web_scapping_vn_investing(web_scrapping):
             print("already login")
 
         #select data & download
-        driver.execute_script("window.scrollTo(0, 699)") 
+        driver.execute_script("window.scrollTo(0, 369)") 
         driver.find_elements(By.ID, 'datePickerIconWrap')[1].click()
         driver.find_elements(By.ID, 'startDate')[0].clear()
         driver.find_elements(By.ID, 'startDate')[0].send_keys("01/01/2000")
